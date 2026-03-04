@@ -198,3 +198,5 @@ Essencial para encontrar suas notas do Obsidian ou scripts SQL perdidos.
 ## Performance/Conclusão
 
 Saber "quem é" a sua máquina (Hardware) e "onde estão" os seus dados (Find) reduz drasticamente o tempo de resposta em incidentes. Para o seu fluxo com o **OneDrive**, o `find` será seu melhor amigo para validar se a sincronização realmente colocou os arquivos no caminho correto: `/home/gerson-pessoal/OneDrive/OBS`.
+
+~$ ls /sys/fs/cgroup
