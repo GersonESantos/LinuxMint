@@ -200,3 +200,54 @@ Essencial para encontrar suas notas do Obsidian ou scripts SQL perdidos.
 Saber "quem é" a sua máquina (Hardware) e "onde estão" os seus dados (Find) reduz drasticamente o tempo de resposta em incidentes. Para o seu fluxo com o **OneDrive**, o `find` será seu melhor amigo para validar se a sincronização realmente colocou os arquivos no caminho correto: `/home/gerson-pessoal/OneDrive/OBS`.
 
 ~$ ls /sys/fs/cgroup
+
+---
+
+Existem várias formas de verificar se o Docker está instalado no seu Linux Mint. Como você está usando o terminal com frequência no seu setup, aqui estão os comandos mais diretos:
+
+### 1. Verificar a Versão (O mais comum)
+
+Abra o terminal e digite:
+
+```bash
+docker --version
+
+```
+
+Se o Docker estiver instalado, você verá algo como `Docker version 24.0.7, build ...`. Se aparecer "comando não encontrado", ele provavelmente não está instalado.
+
+### 2. Verificar o Status do Serviço
+
+Como o Docker roda como um serviço de sistema, você pode verificar se ele está ativo:
+
+```bash
+sudo systemctl status docker
+
+```
+
+* **Active: active (running)**: O Docker está instalado e rodando.
+* **Active: inactive (dead)**: O Docker está instalado, mas o serviço está desligado.
+* **Unit docker.service could not be found**: O Docker não está instalado.
+
+### 3. Teste de Execução (O "Verdadeiro" Teste)
+
+Às vezes o comando existe, mas o Docker não consegue subir contêineres. Tente rodar o contêiner de teste oficial:
+
+```bash
+sudo docker run hello-world
+
+```
+
+Se tudo estiver certo, ele vai baixar uma imagem pequena e exibir uma mensagem de "Hello from Docker!".
+
+---
+
+### Dica para o seu Fluxo
+
+Como você está configurando o **SQL Server no Docker** e usando diferentes máquinas (como o i9 e o Xeon), lembre-se que no Mint (que é baseado no Ubuntu), você pode precisar adicionar seu usuário ao grupo do Docker para não precisar digitar `sudo` toda vez:
+
+```bash
+sudo usermod -aG docker $USER
+
+```
+
